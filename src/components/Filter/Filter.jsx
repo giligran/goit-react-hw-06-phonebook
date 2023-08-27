@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/action.js';
+import { setFilter } from 'redux/filterSlice.js';
 import { Input } from './Filter.styled.js';
 
 function Filter() {

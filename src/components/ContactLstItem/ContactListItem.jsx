@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/action';
+import { deleteContact } from 'redux/contactsSlice';
 import { Button } from './ContactListItem.styled';
 
 function ContactListItem({ id, name, number }) {

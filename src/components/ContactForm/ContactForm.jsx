@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/action';
+import { addContact } from 'redux/contactsSlice';
 import { FormContact, Input, Button } from './ContacForm.styled';
 
-export default function ContactForm({ onSubmit }) {
+export default function ContactForm() {
   const nameId = nanoid();
   const numberId = nanoid();
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export default function ContactForm({ onSubmit }) {
     const form = event.currentTarget;
     const { name, number } = event.currentTarget.elements;
 
-    dispatch(addContact(name.value, number.value));
+    dispatch(addContact({ name: name.value, number: number.value }));
     form.reset();
   };
 

@@ -5,6 +5,7 @@ import { getContacts, getFilter } from 'redux/selectors';
 function ContactList() {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
+
   const visibleContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(filter.toLowerCase().trim())
   );
