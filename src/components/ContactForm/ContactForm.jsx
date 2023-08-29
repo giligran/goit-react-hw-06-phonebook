@@ -1,12 +1,16 @@
 import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 import { FormContact, Input, Button } from './ContacForm.styled';
+import { getContacts } from 'redux/selectors';
 
 export default function ContactForm() {
   const nameId = nanoid();
   const numberId = nanoid();
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+
+  console.log(contacts);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -14,6 +18,11 @@ export default function ContactForm() {
     const form = event.currentTarget;
     const { name, number } = event.currentTarget.elements;
 
+    if (contacts.some(contact => contact.name === name.value)) {
+      alert('Oh! This contact has already been saved');
+      form.reset();
+      return;
+    }
     dispatch(addContact({ name: name.value, number: number.value }));
     form.reset();
   };
